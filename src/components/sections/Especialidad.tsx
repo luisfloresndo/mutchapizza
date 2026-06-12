@@ -68,11 +68,11 @@ function ElCorte() {
       <div className="sticky top-0 flex h-screen items-stretch overflow-hidden">
         {/* Imagen base: la rellena entera */}
         <div className="absolute inset-0">
-          <img src="/images/rellena-entera-cerrada.webp" alt="Pizza rellena entera" className="h-full w-full object-cover" loading="lazy" />
+          <img src="/images/rellena-entera-cerrada.webp" alt="Pizza rellena entera" className="h-full w-full object-cover" decoding="async" />
         </div>
         {/* Encima: el corte, revelado por el barrido del scroll */}
         <motion.div className="absolute inset-0" style={{ clipPath: clip }}>
-          <img src="/images/rellena-corte.webp" alt="Pizza rellena por dentro: dos pisos de masa y relleno" className="h-full w-full object-cover" loading="lazy" />
+          <img src="/images/rellena-corte.webp" alt="Pizza rellena por dentro: dos pisos de masa y relleno" className="h-full w-full object-cover" decoding="async" />
         </motion.div>
         {/* Línea de corte */}
         <motion.div
