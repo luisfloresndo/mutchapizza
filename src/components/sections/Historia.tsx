@@ -45,7 +45,7 @@ function Anio({ progress }: { progress: MotionValue<number> }) {
     <span
       ref={ref}
       className="block select-none font-head leading-none text-mp-rojo"
-      style={{ fontSize: 'clamp(110px, 16vw, 240px)', letterSpacing: '-0.03em' }}
+      style={{ fontSize: 'clamp(90px, 11vw, 170px)', letterSpacing: '-0.03em' }}
     >
       1998
     </span>
@@ -68,6 +68,29 @@ function Beat({ progress, range, kicker, titulo, texto }: { progress: MotionValu
   )
 }
 
+/** Fotos por beat: horno (1998) · equipo (la rellena) · familia (hoy). */
+const BEAT_FOTOS = [POLAROIDS[0], POLAROIDS[1], POLAROIDS[3]]
+
+/** Polaroid de la escena pinned — entra/sale con su beat, con rotación propia. */
+function PolaroidBeat({ progress, range, foto, rotate }: { progress: MotionValue<number>; range: readonly [number, number]; foto: ImageData; rotate: number }) {
+  const [a, b] = range
+  const fade = 0.05
+  const opacity = useTransform(progress, [a, a + fade, b - fade, b], [0, 1, 1, 0])
+  const r = useTransform(progress, [a, b], [rotate - 4, rotate])
+  const y = useTransform(progress, [a, a + fade], [26, 0])
+  return (
+    <motion.figure
+      className="absolute inset-0 m-0 flex items-center justify-center"
+      style={{ opacity, rotate: r, y }}
+    >
+      <div className="w-full max-w-[340px] border border-mp-negro/10 bg-white p-3 pb-4 shadow-[0_18px_40px_rgba(31,20,16,.25)]">
+        <img src={foto.src} alt={foto.alt} className="block aspect-square w-full object-cover" loading="lazy" />
+        <figcaption className="mt-3 text-center font-brand text-[15px] text-mp-cafe">{foto.alt}</figcaption>
+      </div>
+    </motion.figure>
+  )
+}
+
 function Desde1998() {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] })
@@ -87,9 +110,10 @@ function Desde1998() {
             </div>
           </div>
 
-          <div className="hidden lg:block">
-            <ImageStack images={POLAROIDS} maxRotation={14} />
-            <p className="mt-4 text-center font-brand text-[14px] text-mp-cafe">el álbum de la casa — pásalas con el dedo</p>
+          <div className="relative hidden h-[460px] lg:block">
+            {BEAT_FOTOS.map((f, i) => (
+              <PolaroidBeat key={f.id} progress={scrollYProgress} range={BEATS[i].range} foto={f} rotate={i % 2 ? 2.5 : -3} />
+            ))}
           </div>
         </div>
       </div>
