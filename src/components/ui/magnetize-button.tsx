@@ -2,7 +2,6 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils";
 import { motion, useAnimation } from "motion/react";
-import { Magnet } from "lucide-react";
 import { useEffect, useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -21,6 +20,7 @@ function MagnetizeButton({
     className,
     particleCount = 12,
     attractRadius = 50,
+    children,
     ...props
 }: MagnetizeButtonProps) {
     const [isAttracting, setIsAttracting] = useState(false);
@@ -94,13 +94,7 @@ function MagnetizeButton({
                 />
             ))}
             <span className="relative w-full flex items-center justify-center gap-2">
-                <Magnet
-                    className={cn(
-                        "w-4 h-4 transition-transform duration-300",
-                        isAttracting && "scale-110"
-                    )}
-                />
-                {isAttracting ? "Attracting" : "Hover me"}
+                {children ?? (isAttracting ? "Attracting" : "Hover me")}
             </span>
         </Button>
     );

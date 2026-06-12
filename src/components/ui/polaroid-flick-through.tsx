@@ -328,3 +328,4 @@ const ImageStackDemo = () => {
 };
 
 export default ImageStackDemo;
+export { ImageStack, type ImageData };
