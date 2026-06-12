@@ -6,7 +6,8 @@ const LINKS = [
   { name: 'Promociones', url: '#promos' },
   { name: 'Menú', url: '#menu' },
   { name: 'Sucursales', url: '#sucursales' },
-  { name: 'Franquicias', url: '#' },
+  { name: 'Franquicias', url: '#franquicias' },
+  // TODO cliente: URL del portal de facturación
   { name: 'Facturación', url: '#' },
 ]
 

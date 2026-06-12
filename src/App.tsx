@@ -8,6 +8,7 @@ import { Promos } from '@/components/sections/Promos'
 import { Menu } from '@/components/sections/Menu'
 import { Historia } from '@/components/sections/Historia'
 import { Sucursales } from '@/components/sections/Sucursales'
+import { Franquicias } from '@/components/sections/Franquicias'
 import { CtaFinal } from '@/components/sections/CtaFinal'
 import { Footer } from '@/components/sections/Footer'
 
@@ -27,6 +28,7 @@ function App() {
         <Menu />
         <Historia />
         <Sucursales />
+        <Franquicias />
         <CtaFinal />
         <Footer />
       </main>
