@@ -72,7 +72,7 @@ function Tarjeta({ s, abierta, onToggle, index }: { s: Sucursal; abierta: boolea
         type="button"
         onClick={onToggle}
         aria-expanded={abierta}
-        className="flex w-full cursor-pointer items-center justify-between gap-2 px-3.5 py-2.5 text-left"
+        className="flex min-h-[52px] w-full cursor-pointer items-center justify-between gap-2 px-3.5 py-2.5 text-left"
       >
         <span className="min-w-0">
           <span className="block truncate font-brand text-[15px] leading-tight text-mp-negro">{s.nombre}</span>
