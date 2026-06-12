@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap');
+@import 'tailwindcss';
+
+/* dark: como variante de clase — nunca se activa (sitio light por marca),
+   pero los componentes de 21st.dev que traen clases dark: compilan sin efecto */
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================
+   MUTCHA PIZZA — Tokens de marca
+   Fuente: Branding/brand/brand.css (manual de identidad v1.0)
+   ============================================ */
+@theme {
+  /* Colores primarios (del logotipo) */
+  --color-mp-rojo: #db0e1c;
+  --color-mp-amarillo: #ffe900;
+  --color-mp-negro: #1f1410;
+  --color-mp-blanco: #ffffff;
+
+  /* Colores de apoyo */
+  --color-mp-crema: #faf3e2; /* Crema Masa — fondos */
+  --color-mp-masa: #f0e3c5; /* Masa Tostada — fondos alternos */
+  --color-mp-verde: #2f7d4f; /* Verde Pimiento — acentos frescos */
+  --color-mp-cafe: #5c3d24; /* Café Horno — texto secundario cálido */
+  --color-mp-rojo-oscuro: #a50b15; /* Rojo Salsa — hover/sombras del rojo */
+
+  /* Paleta semántica shadcn → mapeada a marca.
+     Re-tematiza los componentes de 21st.dev sin tocar su código. */
+  --color-background: var(--color-mp-crema);
+  --color-foreground: var(--color-mp-negro);
+  --color-primary: var(--color-mp-rojo);
+  --color-primary-foreground: var(--color-mp-blanco);
+  --color-secondary: var(--color-mp-amarillo);
+  --color-secondary-foreground: var(--color-mp-negro);
+  --color-muted: var(--color-mp-masa);
+  --color-muted-foreground: var(--color-mp-cafe);
+  --color-accent: var(--color-mp-amarillo);
+  --color-accent-foreground: var(--color-mp-negro);
+  --color-card: var(--color-mp-blanco);
+  --color-card-foreground: var(--color-mp-negro);
+  --color-popover: var(--color-mp-blanco);
+  --color-popover-foreground: var(--color-mp-negro);
+  --color-border: var(--color-mp-negro);
+  --color-input: var(--color-mp-negro);
+  --color-ring: var(--color-mp-rojo);
+  --color-destructive: var(--color-mp-rojo-oscuro);
+  --color-destructive-foreground: var(--color-mp-blanco);
+
+  /* Tipografía — jerarquía: brand (gancho) → head (dato duro) → text (explicación) */
+  --font-brand: 'Special Elite', 'Courier New', monospace;
+  --font-head: 'Archivo Black', 'Arial Black', sans-serif;
+  --font-text: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --font-sans: var(--font-text);
+
+  /* Sombras duras de marca (estilo sello/cartel) */
+  --shadow-stamp: 6px 6px 0 var(--color-mp-negro);
+  --shadow-stamp-rojo: 6px 6px 0 var(--color-mp-rojo);
+  --shadow-stamp-amarillo: 8px 8px 0 var(--color-mp-amarillo);
+
+  /* Animaciones de componentes (cta-with-text-marquee) */
+  --animate-marquee: marquee var(--duration, 30s) linear infinite;
+  --animate-marquee-vertical: marquee-vertical var(--duration, 30s) linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  @keyframes marquee-vertical {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-100%);
+    }
+  }
+}
+
+:root {
+  /* Compatibilidad con los tokens originales del manual */
+  --mp-rojo: var(--color-mp-rojo);
+  --mp-amarillo: var(--color-mp-amarillo);
+  --mp-negro: var(--color-mp-negro);
+  --mp-crema: var(--color-mp-crema);
+  --mp-masa: var(--color-mp-masa);
+  --mp-verde: var(--color-mp-verde);
+  --mp-cafe: var(--color-mp-cafe);
+  --mp-rojo-oscuro: var(--color-mp-rojo-oscuro);
+
+  /* Tokens del modern-mobile-menu (21st.dev) mapeados a marca */
+  --component-inactive-color: var(--color-mp-cafe);
+  --component-bg: var(--color-mp-blanco);
+  --component-shadow: var(--color-mp-negro);
+  --component-active-bg: var(--color-mp-amarillo);
+  --component-line-inactive-color: var(--color-mp-masa);
+  --component-active-color-default: var(--color-mp-rojo);
+}
+
+html {
+  scroll-behavior: auto; /* Lenis toma control del scroll */
+}
+
+body {
+  margin: 0;
+  background: var(--color-mp-crema);
+  color: var(--color-mp-negro);
+  font-family: var(--font-text);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-mp-amarillo);
+  color: var(--color-mp-negro);
+}
