@@ -1,5 +1,6 @@
 import { useLenis } from '@/hooks/use-lenis'
 import { Nav } from '@/components/sections/Nav'
+import { MobileNav } from '@/components/sections/MobileNav'
 import { Hero } from '@/components/sections/Hero'
 import { Cinta } from '@/components/sections/Cinta'
 import { Especialidad } from '@/components/sections/Especialidad'
@@ -16,7 +17,9 @@ function App() {
   return (
     <>
       <Nav />
-      <main>
+      <MobileNav />
+      {/* pb en móvil: la barra inferior no debe tapar el cierre del footer */}
+      <main className="pb-14 md:pb-0">
         <Hero />
         <Cinta />
         <Especialidad />

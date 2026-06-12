@@ -53,15 +53,7 @@ export function Nav() {
           </a>
         </div>
 
-        {/* móvil: solo CTA — los links viven en el menú inferior */}
-        <a
-          href={PIDE_DIRECTO}
-          target="_blank"
-          rel="noreferrer"
-          className="border-3 border-mp-negro bg-mp-rojo px-4 py-2 font-head text-[12px] text-white shadow-stamp md:hidden"
-        >
-          ORDENA
-        </a>
+        {/* móvil: el CTA y los links viven en la barra inferior (MobileNav) */}
       </div>
     </motion.nav>
   )
