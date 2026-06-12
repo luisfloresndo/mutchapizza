@@ -13,7 +13,7 @@ const POLAROIDS: ImageData[] = [
 const BEATS = [
   { range: [0.05, 0.38], kicker: '1998', titulo: 'Nace en Monterrey', texto: 'Una pizzería de barrio con horno propio y una idea fija: que nadie se quedara con hambre.' },
   { range: [0.38, 0.68], kicker: 'La inventamos nosotros', titulo: 'La pizza rellena', texto: 'Dos pisos de masa, relleno hasta el borde. La especialidad que convirtió la casa en La Casa.' },
-  { range: [0.68, 0.97], kicker: 'Hoy', titulo: '17 sucursales', texto: 'En toda la zona metropolitana. La de confianza, la de toda la vida — con mutcho orgullo.' },
+  { range: [0.68, 0.97], kicker: 'Hoy', titulo: '28 sucursales', texto: 'De Monterrey pa’ todo Nuevo León — y ya también Coahuila. La de confianza, la de toda la vida.' },
 ] as const
 
 function usePinnedCapable() {

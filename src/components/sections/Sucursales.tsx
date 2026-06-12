@@ -6,39 +6,55 @@ const PIDE_DIRECTO = 'https://mutchapizza.pidedirecto.mx/'
 
 interface Sucursal {
   nombre: string
-  municipio: string
-  direccion?: string
-  /** TODO cliente: confirmar teléfono por sucursal */
-  telefono?: string
+  /** Referencia de ubicación tal como la publica la marca */
+  ref?: string
+  telefono: string
   /** Subruta PideDirecto confirmada (CONTEXTO §5: solo /metroplex) */
   slug?: string
 }
 
-// Sucursales detectadas en CONTEXTO-MUTCHA.md §1.
-// TODO cliente: lista oficial con dirección, teléfono y horario por sucursal,
-// y slugs de PideDirecto por sucursal. No se inventan datos.
+// Lista OFICIAL de la marca (imagen del placeholder mutchapizza.com.mx, jun 2026):
+// 28 sucursales con teléfono. No se agregan ubicaciones que no estén aquí.
 const SUCURSALES: Sucursal[] = [
-  { nombre: 'Monterrey Centro', municipio: 'Monterrey', direccion: 'Av. Morelos 359 Ote.' },
-  { nombre: 'Contry', municipio: 'Monterrey' },
-  { nombre: 'Solidaridad', municipio: 'Monterrey' },
-  { nombre: 'La Rioja', municipio: 'Monterrey' },
-  { nombre: 'Lincoln', municipio: 'Monterrey' },
-  { nombre: 'Metroplex', municipio: 'Monterrey', slug: 'metroplex' },
-  { nombre: 'Santa Rosa', municipio: 'Apodaca' },
-  { nombre: 'Apodaca', municipio: 'Apodaca' },
-  { nombre: 'García', municipio: 'García' },
-  { nombre: 'Guadalupe', municipio: 'Guadalupe' },
-  { nombre: 'San Nicolás', municipio: 'San Nicolás de los Garza' },
-  { nombre: 'Juárez', municipio: 'Juárez', direccion: 'Av. Arturo B. de la Garza' },
-  { nombre: 'Zuazua', municipio: 'General Zuazua' },
-  { nombre: 'Allende', municipio: 'Allende', direccion: 'Carr. Allende–Monterrey km 16' },
+  { nombre: 'Allende', ref: 'Allende, N.L.', telefono: '81 3541 3333' },
+  { nombre: 'Anzúres', telefono: '81 3067 2047' },
+  { nombre: 'Ciudadela', ref: 'Juárez, N.L.', telefono: '81 8233 2270' },
+  { nombre: 'Ciénega de Flores', ref: 'Ciénega de Flores, N.L.', telefono: '81 3541 4766' },
+  { nombre: 'Contry', ref: 'Soriana', telefono: '81 8358 0101' },
+  { nombre: 'Diego Díaz', ref: 'San Nicolás', telefono: '81 8383 1212' },
+  { nombre: 'García', ref: 'Sor Juana, García N.L.', telefono: '81 8283 2050' },
+  { nombre: 'Galeana', ref: 'Galeana, N.L.', telefono: '82 6296 9814' },
+  { nombre: 'Huinalá', ref: 'Soriana', telefono: '81 1158 9933' },
+  { nombre: 'La Rioja', ref: 'Plaza Las Vistas', telefono: '81 1358 3399' },
+  { nombre: 'Las Margaritas', ref: 'Mi Tienda del Ahorro', telefono: '81 8341 4434' },
+  { nombre: 'Linares', ref: 'Linares, N.L.', telefono: '82 1219 9507' },
+  { nombre: 'Linda Vista', ref: 'Av. Linda Vista', telefono: '81 8158 1822' },
+  { nombre: 'Metroplex', ref: 'Mi Tienda del Ahorro', telefono: '81 8302 9887', slug: 'metroplex' },
+  { nombre: 'Pablo Livas', ref: 'HEB', telefono: '81 8393 1313' },
+  { nombre: 'Plaza Berneses', ref: 'San Nicolás', telefono: '81 3541 4700' },
+  { nombre: 'Plaza México', ref: 'Food Court', telefono: '81 1101 8719' },
+  { nombre: 'Ramos Arizpe', ref: 'Ramos Arizpe, Coah.', telefono: '84 4754 0444' },
+  { nombre: 'Raúl Salinas', ref: 'Escobedo, M.T.A.', telefono: '81 8307 2520' },
+  { nombre: 'Salinas Victoria', ref: 'Soriana', telefono: '81 1159 9199' },
+  { nombre: 'Saltillo', ref: 'Mi Tienda del Ahorro, Coah.', telefono: '844 754 0004' },
+  { nombre: 'San Francisco', ref: 'Juárez, N.L.', telefono: '81 2674 0758' },
+  { nombre: 'Santa Rosa', ref: 'Soriana', telefono: '81 8148 5008' },
+  { nombre: 'Solidaridad', ref: 'Bodega Aurrera', telefono: '81 8306 2323' },
+  { nombre: 'Topo Chico', ref: 'Soriana', telefono: '81 3496 3431' },
+  { nombre: 'Valle Santa María', ref: 'Mi Tienda del Ahorro', telefono: '81 8359 6901' },
+  { nombre: 'Vistas del Río', ref: 'Juárez, N.L.', telefono: '81 3541 4424' },
+  { nombre: 'Zuazua', ref: 'Mi Tienda del Ahorro', telefono: '82 5107 0055' },
 ]
 
 const CANALES = ['Comedor', 'Para llevar', 'A domicilio', 'Uber Eats', 'Rappi', 'DiDi Food']
 
 function mapsUrl(s: Sucursal) {
-  const q = encodeURIComponent(`Mutcha Pizza ${s.nombre}, ${s.municipio}, Nuevo León`)
+  const q = encodeURIComponent(`Mutcha Pizza ${s.nombre}${s.ref ? ' ' + s.ref : ''}`)
   return `https://www.google.com/maps/search/?api=1&query=${q}`
+}
+
+function telHref(t: string) {
+  return `tel:+52${t.replace(/\D/g, '')}`
 }
 
 function Tarjeta({ s, abierta, onToggle, index }: { s: Sucursal; abierta: boolean; onToggle: () => void; index: number }) {
@@ -46,20 +62,23 @@ function Tarjeta({ s, abierta, onToggle, index }: { s: Sucursal; abierta: boolea
     <motion.div
       id={`sucursal-${s.nombre.toLowerCase().replace(/\s+/g, '-')}`}
       className={`border-3 border-mp-negro bg-white transition-shadow ${abierta ? 'shadow-[6px_6px_0_var(--mp-rojo)]' : 'shadow-[3px_3px_0_var(--mp-negro)]'}`}
-      style={{ rotate: abierta ? '0deg' : index % 2 ? '0.5deg' : '-0.5deg' }}
-      initial={{ opacity: 0, y: 18 }}
+      style={{ rotate: abierta ? '0deg' : index % 2 ? '0.4deg' : '-0.4deg' }}
+      initial={{ opacity: 0, y: 14 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.45, delay: (index % 4) * 0.06 }}
+      viewport={{ once: true, margin: '-30px' }}
+      transition={{ duration: 0.4, delay: (index % 6) * 0.04 }}
     >
       <button
         type="button"
         onClick={onToggle}
         aria-expanded={abierta}
-        className="flex w-full cursor-pointer items-center justify-between gap-2 px-4 py-3 text-left"
+        className="flex w-full cursor-pointer items-center justify-between gap-2 px-3.5 py-2.5 text-left"
       >
-        <span className="font-brand text-[16px] text-mp-negro">{s.nombre}</span>
-        <span className={`font-head text-[14px] transition-transform ${abierta ? 'rotate-45 text-mp-rojo' : 'text-mp-cafe'}`}>+</span>
+        <span className="min-w-0">
+          <span className="block truncate font-brand text-[15px] leading-tight text-mp-negro">{s.nombre}</span>
+          {s.ref && <span className="block truncate font-text text-[11.5px] text-mp-cafe">{s.ref}</span>}
+        </span>
+        <span className={`shrink-0 font-head text-[14px] transition-transform ${abierta ? 'rotate-45 text-mp-rojo' : 'text-mp-cafe'}`}>+</span>
       </button>
 
       <div
@@ -67,33 +86,30 @@ function Tarjeta({ s, abierta, onToggle, index }: { s: Sucursal; abierta: boolea
         style={{ gridTemplateRows: abierta ? '1fr' : '0fr' }}
       >
         <div className="overflow-hidden">
-          <div className="space-y-2 border-t-3 border-mp-negro/15 px-4 py-3">
-            <p className="flex items-start gap-2 font-text text-[13px] leading-snug text-mp-cafe">
-              <MapPin size={14} className="mt-0.5 shrink-0 text-mp-rojo" />
-              {s.direccion ? `${s.direccion}, ${s.municipio}, N.L.` : `${s.municipio}, N.L.`}
-            </p>
-            <p className="flex items-center gap-2 font-text text-[13px] text-mp-cafe">
+          <div className="space-y-2 border-t-3 border-mp-negro/15 px-3.5 py-3">
+            <a href={telHref(s.telefono)} className="flex items-center gap-2 font-text text-[13.5px] font-semibold text-mp-negro hover:text-mp-rojo">
+              <Phone size={14} className="shrink-0 text-mp-rojo" />
+              {s.telefono}
+            </a>
+            <p className="flex items-center gap-2 font-text text-[12.5px] text-mp-cafe">
               <Clock size={14} className="shrink-0 text-mp-rojo" />
+              {/* TODO cliente: confirmar horario por sucursal */}
               11:00 – 23:00 · todos los días
             </p>
-            <p className="flex items-center gap-2 font-text text-[13px] text-mp-cafe">
-              <Phone size={14} className="shrink-0 text-mp-rojo" />
-              {s.telefono ?? 'Teléfono en tu app de entrega'}
-            </p>
-            <div className="flex flex-wrap gap-2 pt-2">
+            <div className="flex flex-wrap gap-2 pt-1.5">
               <a
                 href={mapsUrl(s)}
                 target="_blank"
                 rel="noreferrer"
-                className="border-2 border-mp-negro bg-mp-amarillo px-3 py-1.5 font-head text-[11px] tracking-wide text-mp-negro"
+                className="inline-flex items-center gap-1.5 border-2 border-mp-negro bg-mp-amarillo px-2.5 py-1.5 font-head text-[10.5px] tracking-wide text-mp-negro"
               >
-                CÓMO LLEGAR
+                <MapPin size={11} /> CÓMO LLEGAR
               </a>
               <a
                 href={s.slug ? `${PIDE_DIRECTO}${s.slug}` : PIDE_DIRECTO}
                 target="_blank"
                 rel="noreferrer"
-                className="border-2 border-mp-negro bg-mp-rojo px-3 py-1.5 font-head text-[11px] tracking-wide text-white"
+                className="border-2 border-mp-negro bg-mp-rojo px-2.5 py-1.5 font-head text-[10.5px] tracking-wide text-white"
               >
                 ORDENA DE ESTA
               </a>
@@ -106,27 +122,28 @@ function Tarjeta({ s, abierta, onToggle, index }: { s: Sucursal; abierta: boolea
 }
 
 export function Sucursales() {
-  const [abierta, setAbierta] = useState<number | null>(0)
+  const [abierta, setAbierta] = useState<number | null>(null)
 
   return (
     <section id="sucursales" className="border-t-4 border-mp-negro bg-mp-crema px-5 py-20 sm:py-24">
       <div className="mx-auto max-w-6xl">
-        <div className="grid items-start gap-14 lg:grid-cols-[1fr_380px]">
+        <div className="grid items-start gap-12 lg:grid-cols-[1fr_340px]">
           <div>
             <p className="font-head text-[13px] uppercase tracking-[.18em] text-mp-rojo-oscuro">Sucursales</p>
             <div className="mt-1 flex items-baseline gap-4">
               <span className="font-head leading-none text-mp-rojo" style={{ fontSize: 'clamp(72px, 10vw, 128px)' }}>
-                17
+                28
               </span>
               <h2 className="max-w-xs font-brand text-mp-negro" style={{ fontSize: 'clamp(22px, 3vw, 32px)', lineHeight: 1.2 }}>
-                sucursales en la zona metro de Monterrey
+                sucursales en Nuevo León y Coahuila
               </h2>
             </div>
             <p className="mt-4 max-w-lg font-text text-[15.5px] leading-relaxed text-mp-cafe">
-              Llámanos, visítanos o pide en línea. Tu pizza rellena siempre tiene una casa cerca.
+              Si andas con hambre, tranqui: hay una sucursal cerca para
+              salvarte. Llámale directo o pide en línea.
             </p>
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            <div className="mt-8 grid gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
               {SUCURSALES.map((s, i) => (
                 <Tarjeta key={s.nombre} s={s} index={i} abierta={abierta === i} onToggle={() => setAbierta(abierta === i ? null : i)} />
               ))}

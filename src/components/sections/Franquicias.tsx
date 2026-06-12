@@ -11,7 +11,7 @@ const RAZONES = [
   },
   {
     titulo: 'Operación probada',
-    texto: '28 años de operación y 17 sucursales funcionando en comedor, para llevar y a domicilio.',
+    texto: '28 años de operación y 28 sucursales funcionando en Nuevo León y Coahuila.',
   },
   {
     titulo: 'Marca de barrio querida',
@@ -29,7 +29,7 @@ export function Franquicias() {
             <h2 className="mt-2 font-brand text-mp-negro" style={{ fontSize: 'clamp(28px, 4.2vw, 44px)', lineHeight: 1.18 }}>
               28 años haciendo pizza rellena.
               <br />
-              17 sucursales lo respaldan.
+              28 sucursales lo respaldan.
             </h2>
             <p className="mt-5 max-w-xl font-text text-[16px] leading-relaxed text-mp-cafe">
               Si quieres llevar La Casa de la Pizza Rellena a tu colonia,
