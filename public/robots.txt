@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mutchapizza.vercel.app/sitemap.xml

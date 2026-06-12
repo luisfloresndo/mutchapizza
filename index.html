@@ -1,11 +1,83 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-MX">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Mutcha Pizza — La Casa de la Pizza Rellena. Desde 1998 en Monterrey. Creadores de la pizza rellena: dos pisos de masa, relleno hasta el borde." />
-    <title>Mutcha Pizza · La Casa de la Pizza Rellena</title>
+
+    <title>Mutcha Pizza · La Casa de la Pizza Rellena · Monterrey</title>
+    <meta name="description" content="Somos los creadores de la pizza rellena: dos pisos de masa, relleno hasta el borde. Desde 1998 en Monterrey, 17 sucursales. Ordena a domicilio, para llevar o en comedor." />
+    <!-- TODO: al conectar el dominio del cliente, cambiar canonical y og:url a https://mutchapizza.com.mx/ -->
+    <link rel="canonical" href="https://mutchapizza.vercel.app/" />
+    <meta name="theme-color" content="#DB0E1C" />
+
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/icon-192.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Open Graph (los links de este negocio se comparten por WhatsApp) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:site_name" content="Mutcha Pizza" />
+    <meta property="og:title" content="Mutcha Pizza · La Casa de la Pizza Rellena" />
+    <meta property="og:description" content="Dos pisos de masa, relleno hasta el borde. Desde 1998 en Monterrey · 17 sucursales · a domicilio, para llevar o en comedor." />
+    <meta property="og:url" content="https://mutchapizza.vercel.app/" />
+    <meta property="og:image" content="https://mutchapizza.vercel.app/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Pizza rellena de Mutcha Pizza con el logotipo — La Casa de la Pizza Rellena, desde 1998" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mutcha Pizza · La Casa de la Pizza Rellena" />
+    <meta name="twitter:description" content="Dos pisos de masa, relleno hasta el borde. Desde 1998 en Monterrey · 17 sucursales." />
+    <meta name="twitter:image" content="https://mutchapizza.vercel.app/og.jpg" />
+
+    <!-- schema.org: Restaurant principal + sucursales.
+         Datos de CONTEXTO-MUTCHA.md. Sin dato exacto NO se inventa:
+         TODO cliente: dirección/teléfono/horario por sucursal, geo. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Restaurant",
+          "@id": "https://mutchapizza.vercel.app/#restaurant",
+          "name": "Mutcha Pizza",
+          "alternateName": "La Casa de la Pizza Rellena",
+          "url": "https://mutchapizza.vercel.app/",
+          "image": "https://mutchapizza.vercel.app/og.jpg",
+          "logo": "https://mutchapizza.vercel.app/icon-512.png",
+          "servesCuisine": "Pizza",
+          "acceptsReservations": false,
+          "priceRange": "$",
+          "foundingDate": "1998",
+          "slogan": "La Casa de la Pizza Rellena",
+          "areaServed": { "@type": "City", "name": "Zona metropolitana de Monterrey, Nuevo León, México" },
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Av. Morelos 359 Ote.",
+            "addressLocality": "Monterrey",
+            "addressRegion": "Nuevo León",
+            "addressCountry": "MX"
+          },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+            "opens": "11:00",
+            "closes": "23:00"
+          },
+          "sameAs": [
+            "https://www.facebook.com/mpmutchapizza/",
+            "https://www.instagram.com/mpmutchapizza_/"
+          ],
+          "potentialAction": {
+            "@type": "OrderAction",
+            "target": "https://mutchapizza.pidedirecto.mx/"
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
