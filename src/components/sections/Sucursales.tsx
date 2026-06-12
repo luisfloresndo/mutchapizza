@@ -17,7 +17,7 @@ interface Sucursal {
 // 28 sucursales con teléfono. No se agregan ubicaciones que no estén aquí.
 const SUCURSALES: Sucursal[] = [
   { nombre: 'Allende', ref: 'Allende, N.L.', telefono: '81 3541 3333' },
-  { nombre: 'Anzúres', telefono: '81 3067 2047' },
+  { nombre: 'Anzúres', ref: 'Juárez, N.L.', telefono: '81 3067 2047' },
   { nombre: 'Ciudadela', ref: 'Juárez, N.L.', telefono: '81 8233 2270' },
   { nombre: 'Ciénega de Flores', ref: 'Ciénega de Flores, N.L.', telefono: '81 3541 4766' },
   { nombre: 'Contry', ref: 'Soriana', telefono: '81 8358 0101' },
