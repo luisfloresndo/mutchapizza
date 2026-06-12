@@ -161,7 +161,7 @@ export function MpLogo({ variant = 'stacked', scheme = 'full', tagline = false, 
     <span
       className={className}
       role="img"
-      aria-label={tagline ? 'Mutcha Pizza — La Casa de la Pizza Rellena' : 'Mutcha Pizza'}
+      aria-label={tagline ? 'MP Mutcha Pizza — La Casa de la Pizza Rellena' : 'MP Mutcha Pizza'}
       style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', lineHeight: 1, fontFamily: 'var(--font-brand)', ...style }}
     >
       {/* contenido visual del logotipo — el nombre accesible vive en el aria-label del contenedor */}

@@ -15,6 +15,11 @@
     <link rel="icon" type="image/png" href="/icon-192.png" sizes="192x192" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
+    <!-- LCP: el hero se descubre antes de que arranque React -->
+    <link rel="preload" as="image" href="/images/hero-rellena.webp"
+      imagesrcset="/images/hero-rellena-900.webp 900w, /images/hero-rellena.webp 1672w"
+      imagesizes="100vw" fetchpriority="high" />
+
     <!-- Open Graph (los links de este negocio se comparten por WhatsApp) -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_MX" />

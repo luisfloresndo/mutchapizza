@@ -28,7 +28,7 @@ export function Nav() {
         className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 transition-[padding] duration-300 sm:px-7"
         style={{ paddingBlock: compact ? '8px' : '14px' }}
       >
-        <a href="#top" aria-label="Mutcha Pizza — inicio">
+        <a href="#top" aria-label="MP Mutcha Pizza — ir al inicio">
           <MpLogo variant="horizontal" style={{ fontSize: compact ? 13 : 15 }} />
         </a>
 
