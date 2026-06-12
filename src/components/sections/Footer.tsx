@@ -27,7 +27,7 @@ export function Footer() {
       style={{ clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0 100%)' }}
     >
       <div className="fixed bottom-0 h-[560px] w-full bg-mp-negro sm:h-[520px]">
-        <div className="sticky top-[calc(100vh-560px)] flex h-full flex-col justify-between overflow-hidden px-5 pt-14 sm:top-[calc(100vh-520px)] sm:px-10">
+        <div className="sticky top-[calc(100vh-560px)] flex h-full flex-col justify-between px-5 pt-14 sm:top-[calc(100vh-520px)] sm:px-10">
           <div className="mx-auto flex w-full max-w-6xl flex-col items-start justify-between gap-10 sm:flex-row sm:items-center">
             <MpLogo variant="stacked" tagline style={{ fontSize: 30 }} />
 

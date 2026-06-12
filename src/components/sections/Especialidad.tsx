@@ -28,7 +28,7 @@ function usePinnedCapable() {
 /** Palabra del gancho que se revela según el progreso. */
 function Palabra({ progress, index, total, children }: { progress: MotionValue<number>; index: number; total: number; children: string }) {
   const start = 0.04 + (index / total) * 0.16
-  const opacity = useTransform(progress, [start, start + 0.03], [0.15, 1])
+  const opacity = useTransform(progress, [start, start + 0.03], [0.4, 1])
   const y = useTransform(progress, [start, start + 0.03], [14, 0])
   return (
     <motion.span className="inline-block" style={{ opacity, y }}>
