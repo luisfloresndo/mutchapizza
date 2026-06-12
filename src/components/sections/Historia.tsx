@@ -59,7 +59,7 @@ function Beat({ progress, range, kicker, titulo, texto }: { progress: MotionValu
   const y = useTransform(progress, [a, a + fade], [22, 0])
   return (
     <motion.div className="absolute inset-x-0 bottom-0" style={{ opacity, y }}>
-      <p className="font-brand text-[16px] text-mp-rojo">{kicker}</p>
+      <p className="font-brand text-[16px] text-mp-rojo-oscuro">{kicker}</p>
       <h3 className="mt-1 font-brand text-mp-negro" style={{ fontSize: 'clamp(24px, 3vw, 36px)' }}>
         {titulo}
       </h3>
@@ -77,7 +77,7 @@ function Desde1998() {
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-6 sm:px-10 lg:grid-cols-2">
           <div>
-            <p className="font-head text-[13px] uppercase tracking-[.18em] text-mp-rojo">Desde 1998</p>
+            <p className="font-head text-[13px] uppercase tracking-[.18em] text-mp-rojo-oscuro">Desde 1998</p>
             <Anio progress={scrollYProgress} />
             {/* Beats superpuestos — uno visible a la vez */}
             <div className="relative mt-6 h-[190px]">
@@ -101,7 +101,7 @@ function Desde1998() {
 function Desde1998Simple() {
   return (
     <div className="mx-auto max-w-6xl px-5 py-16">
-      <p className="font-head text-[13px] uppercase tracking-[.18em] text-mp-rojo">Desde 1998</p>
+      <p className="font-head text-[13px] uppercase tracking-[.18em] text-mp-rojo-oscuro">Desde 1998</p>
       <h2 className="mt-2 font-brand text-mp-negro" style={{ fontSize: 'clamp(30px, 7vw, 46px)', lineHeight: 1.15 }}>
         La de toda la vida
       </h2>
@@ -115,7 +115,7 @@ function Desde1998Simple() {
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.5 }}
           >
-            <p className="font-brand text-[15px] text-mp-rojo">{b.kicker}</p>
+            <p className="font-brand text-[15px] text-mp-rojo-oscuro">{b.kicker}</p>
             <h3 className="mt-1 font-brand text-[24px] text-mp-negro">{b.titulo}</h3>
             <p className="mt-2 font-text text-[15px] leading-relaxed text-mp-cafe">{b.texto}</p>
           </motion.div>

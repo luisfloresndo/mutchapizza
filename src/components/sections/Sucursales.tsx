@@ -113,7 +113,7 @@ export function Sucursales() {
       <div className="mx-auto max-w-6xl">
         <div className="grid items-start gap-14 lg:grid-cols-[1fr_380px]">
           <div>
-            <p className="font-head text-[13px] uppercase tracking-[.18em] text-mp-rojo">Sucursales</p>
+            <p className="font-head text-[13px] uppercase tracking-[.18em] text-mp-rojo-oscuro">Sucursales</p>
             <div className="mt-1 flex items-baseline gap-4">
               <span className="font-head leading-none text-mp-rojo" style={{ fontSize: 'clamp(72px, 10vw, 128px)' }}>
                 17

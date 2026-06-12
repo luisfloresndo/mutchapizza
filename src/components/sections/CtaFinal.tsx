@@ -48,7 +48,7 @@ export function CtaFinal() {
           </MagnetizeButton>
         </motion.div>
 
-        <p className="mt-8 font-text text-[14px] text-white/75">
+        <p className="mt-8 font-text text-[14px] text-white">
           En comedor, para llevar o a domicilio · también en Uber Eats, Rappi y DiDi Food
         </p>
       </div>

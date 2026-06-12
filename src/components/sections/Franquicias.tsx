@@ -25,7 +25,7 @@ export function Franquicias() {
       <div className="mx-auto max-w-6xl">
         <div className="grid items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
           <div>
-            <p className="font-head text-[13px] uppercase tracking-[.18em] text-mp-rojo">Franquicias</p>
+            <p className="font-head text-[13px] uppercase tracking-[.18em] text-mp-rojo-oscuro">Franquicias</p>
             <h2 className="mt-2 font-brand text-mp-negro" style={{ fontSize: 'clamp(28px, 4.2vw, 44px)', lineHeight: 1.18 }}>
               28 años haciendo pizza rellena.
               <br />

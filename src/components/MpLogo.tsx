@@ -160,18 +160,23 @@ export function MpLogo({ variant = 'stacked', scheme = 'full', tagline = false, 
   return (
     <span
       className={className}
+      role="img"
+      aria-label={tagline ? 'Mutcha Pizza — La Casa de la Pizza Rellena' : 'Mutcha Pizza'}
       style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', lineHeight: 1, fontFamily: 'var(--font-brand)', ...style }}
     >
-      {variant === 'isotipo' ? (
-        tab
-      ) : (
-        <span style={{ display: 'inline-flex', flexDirection: isH ? 'row' : 'column', alignItems: 'center' }}>
-          {tab}
-          {b1}
-          {b2}
-        </span>
-      )}
-      {tag}
+      {/* contenido visual del logotipo — el nombre accesible vive en el aria-label del contenedor */}
+      <span aria-hidden="true" style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center' }}>
+        {variant === 'isotipo' ? (
+          tab
+        ) : (
+          <span style={{ display: 'inline-flex', flexDirection: isH ? 'row' : 'column', alignItems: 'center' }}>
+            {tab}
+            {b1}
+            {b2}
+          </span>
+        )}
+        {tag}
+      </span>
     </span>
   )
 }

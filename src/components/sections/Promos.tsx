@@ -36,7 +36,7 @@ export function Promos() {
   return (
     <section id="promos" className="border-y-4 border-mp-negro bg-mp-amarillo px-5 py-20 sm:py-24">
       <div className="mx-auto max-w-6xl">
-        <p className="font-head text-[13px] uppercase tracking-[.18em] text-mp-rojo">Promociones</p>
+        <p className="font-head text-[13px] uppercase tracking-[.18em] text-mp-negro">Promociones</p>
         <h2 className="mt-2 font-brand text-mp-negro" style={{ fontSize: 'clamp(30px, 4.5vw, 46px)' }}>
           Las de siempre, a precio de amigos
         </h2>

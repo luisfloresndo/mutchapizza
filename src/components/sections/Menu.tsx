@@ -80,7 +80,7 @@ export function Menu() {
         </div>
       )}
       <div className="relative z-10 mx-auto max-w-6xl">
-        <p className="font-head text-[13px] uppercase tracking-[.18em] text-mp-rojo">El menú</p>
+        <p className="font-head text-[13px] uppercase tracking-[.18em] text-mp-rojo-oscuro">El menú</p>
         <h2 className="mt-2 font-brand text-mp-negro" style={{ fontSize: 'clamp(30px, 4.5vw, 46px)' }}>
           ¿De cuál traes antojo hoy?
         </h2>

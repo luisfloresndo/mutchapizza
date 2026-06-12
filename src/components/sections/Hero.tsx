@@ -30,6 +30,8 @@ export function Hero() {
       <motion.div className="absolute inset-0" style={{ scale: bgScale }} aria-hidden>
         <img
           src="/images/hero-rellena.webp"
+          srcSet="/images/hero-rellena-900.webp 900w, /images/hero-rellena.webp 1672w"
+          sizes="100vw"
           alt=""
           fetchPriority="high"
           className="h-full w-full object-cover"
