@@ -143,7 +143,7 @@ export function Sucursales() {
               salvarte. Llámale directo o pide en línea.
             </p>
 
-            <div className="mt-8 grid gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
+            <div className="mt-8 grid items-start gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
               {SUCURSALES.map((s, i) => (
                 <Tarjeta key={s.nombre} s={s} index={i} abierta={abierta === i} onToggle={() => setAbierta(abierta === i ? null : i)} />
               ))}
