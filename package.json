@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/archivo": "^5.2.8",
+    "@fontsource/archivo-black": "^5.2.8",
+    "@fontsource/special-elite": "^5.2.8",
     "@radix-ui/react-slot": "^1.2.5",
     "@tailwindcss/vite": "^4.3.0",
     "class-variance-authority": "^0.7.1",

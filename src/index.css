@@ -1,4 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap');
+/* Fuentes self-hosted (font-display: swap, solo subset latin) —
+   sin @import bloqueante a Google Fonts */
+@import '@fontsource/special-elite/latin-400.css';
+@import '@fontsource/archivo-black/latin-400.css';
+@import '@fontsource/archivo/latin-400.css';
+@import '@fontsource/archivo/latin-500.css';
+@import '@fontsource/archivo/latin-600.css';
+@import '@fontsource/archivo/latin-700.css';
 @import 'tailwindcss';
 
 /* dark: como variante de clase — nunca se activa (sitio light por marca),
