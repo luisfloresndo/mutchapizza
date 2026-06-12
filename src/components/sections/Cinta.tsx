@@ -1,15 +1,26 @@
 import { ScrollVelocity } from '@/components/ui/scroll-velocity'
 
-/** Cinta marquee de marca — acelera con la velocidad del scroll. */
-export function Cinta({ texto = 'mutcho sabor · mutcho queso · mutcha pizza · ' }: { texto?: string }) {
+/**
+ * Cinta de marca a dos líneas — reactivas a la velocidad del scroll,
+ * direcciones opuestas, estilo sello (bordes negros gruesos).
+ */
+export function Cinta() {
   return (
-    <div className="border-y-4 border-mp-negro bg-mp-rojo py-3" aria-hidden>
+    <div className="border-y-[6px] border-mp-negro bg-mp-rojo" aria-hidden>
       <ScrollVelocity
-        velocity={3}
-        className="font-brand text-[20px] tracking-[.05em] text-mp-amarillo"
+        velocity={4}
+        className="py-2 font-brand text-[26px] tracking-[.05em] text-mp-amarillo sm:text-[32px]"
       >
-        {texto}
+        {'mutcho sabor · mutcho queso · mutcha pizza · '}
       </ScrollVelocity>
+      <div className="border-t-[3px] border-mp-negro/40">
+        <ScrollVelocity
+          velocity={-4}
+          className="py-2 font-brand text-[26px] tracking-[.05em] text-mp-crema sm:text-[32px]"
+        >
+          {'la casa de la pizza rellena · desde 1998 · monterrey · '}
+        </ScrollVelocity>
+      </div>
     </div>
   )
 }

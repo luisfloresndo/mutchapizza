@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'motion/react'
+import { ImageTrail } from '@/components/ui/image-trail'
 
 /**
  * Selector interactivo de categorías del menú.
@@ -41,12 +42,44 @@ const CATEGORIAS: Categoria[] = [
   },
 ]
 
+const TRAIL_FOTOS = [
+  '/images/rellena-corte.webp',
+  '/images/chicago-style.webp',
+  '/images/clasica.webp',
+  '/images/promo-xtragrande.webp',
+]
+
 export function Menu() {
   const [activa, setActiva] = useState(0)
+  const sectionRef = useRef<HTMLElement>(null)
+  const [conCursor, setConCursor] = useState(false)
+  useEffect(() => {
+    const mq = window.matchMedia('(pointer: fine) and (prefers-reduced-motion: no-preference)')
+    const update = () => setConCursor(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
 
   return (
-    <section id="menu" className="bg-mp-crema px-5 py-20 sm:py-24">
-      <div className="mx-auto max-w-6xl">
+    <section id="menu" ref={sectionRef} className="relative bg-mp-crema px-5 py-20 sm:py-24">
+      {/* Estela de pizzas siguiendo el cursor */}
+      {conCursor && (
+        <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden>
+          <ImageTrail containerRef={sectionRef as React.RefObject<HTMLElement>} rotationRange={12} interval={140}>
+            {TRAIL_FOTOS.map((src) => (
+              <img
+                key={src}
+                src={src}
+                alt=""
+                loading="lazy"
+                className="size-24 border-3 border-mp-negro object-cover shadow-[4px_4px_0_var(--mp-negro)]"
+              />
+            ))}
+          </ImageTrail>
+        </div>
+      )}
+      <div className="relative z-10 mx-auto max-w-6xl">
         <p className="font-head text-[13px] uppercase tracking-[.18em] text-mp-rojo">El menú</p>
         <h2 className="mt-2 font-brand text-mp-negro" style={{ fontSize: 'clamp(30px, 4.5vw, 46px)' }}>
           ¿De cuál traes antojo hoy?
