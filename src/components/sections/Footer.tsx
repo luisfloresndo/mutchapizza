@@ -66,8 +66,8 @@ export function Footer() {
             {/* Nombre gigante — el cierre */}
             <div
               aria-hidden
-              className="select-none text-center font-head uppercase leading-[0.78] text-mp-rojo"
-              style={{ fontSize: 'clamp(80px, 16.5vw, 250px)', letterSpacing: '-0.02em', marginBottom: '-0.12em' }}
+              className="select-none text-center font-head uppercase leading-[0.82] text-mp-rojo"
+              style={{ fontSize: 'clamp(72px, 13.5vw, 210px)', letterSpacing: '-0.02em' }}
             >
               MUTCHA
             </div>

@@ -80,8 +80,8 @@ function ElCorte() {
           style={{ left: lineLeft, opacity: lineOpacity }}
           aria-hidden
         />
-        {/* Velo para legibilidad del texto */}
-        <div className="absolute inset-0 bg-gradient-to-r from-mp-negro/85 via-mp-negro/30 to-transparent" aria-hidden />
+        {/* Velo para legibilidad del texto — fuerte en los 2/3 izquierdos donde vive el copy */}
+        <div className="absolute inset-0 bg-gradient-to-r from-mp-negro/95 from-10% via-mp-negro/75 via-55% to-mp-negro/15" aria-hidden />
 
         {/* Texto */}
         <div className="relative z-20 mx-auto flex w-full max-w-6xl flex-col justify-center px-6 sm:px-10">
